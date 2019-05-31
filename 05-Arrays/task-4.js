@@ -6,7 +6,6 @@ const every = function(arr, tsk) {
     if (!(typeof tsk === 'function')) {
         throw new Error('second parameter type is not a Function');
     }
-
    
     let returned = false;
 
@@ -17,7 +16,6 @@ const every = function(arr, tsk) {
             break;
         }
     }
-
     return returned;
 };
   

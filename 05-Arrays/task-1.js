@@ -18,8 +18,3 @@ forEach(arr, function(item, i, arr) {
     
     console.log(`Index: ${i}, Element: ${item}, Array: ${arr}`)
 });
-
-// forEach(arr, function(item, i, arr) {
-    
-//     console.log(`Element: ${item}, Array: ${arr}`)
-// });
