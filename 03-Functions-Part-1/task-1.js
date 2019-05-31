@@ -4,7 +4,5 @@ function f(n) {
     else
         return n * n * n;
 }
-
 console.log(f(2));
-
 console.log(f(3));
