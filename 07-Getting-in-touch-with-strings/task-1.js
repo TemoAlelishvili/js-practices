@@ -11,3 +11,4 @@ function upperCaseFirst(n) {
     }  
 }
 console.log(upperCaseFirst('temo'));
+
