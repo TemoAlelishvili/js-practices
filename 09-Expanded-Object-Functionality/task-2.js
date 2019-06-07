@@ -1,25 +1,22 @@
-Object.defineProperty(Object.prototype, 'mergeDeepRight', {
-    value(core) {
-        for (key of Object.keys(this)) {
-            if (key in core) {
-                if (typeof this[key] == "object") {
-                    if (Array.isArray(this[key])) {
-                        
-                        this[key] = this[key].concat(core[key])
-                        
-                    } else {
-                        this[key] = this[key].mergeDeepRight(core[key])
-                    }
-                } else {
-                    this[key] = core[key]
-                }
+Object.prototype.mergeDeepRight = function(object) {
+    addingToFunction(this, object);
+ 
+    function addingToFunction(param1, param2){
+        let keys = Object.keys(param2);
+        keys.forEach(function(key){
+            param1[key] = param2[key];
+            if(typeof param2[key] === 'object' && !Array.isArray(param2[key])){
+                addingToFunction(param1[key], param2[key]);
+           }  else if (Array.isArray(param2[key])){
+                param1[key].push(...param2[key]);
             }
-        }
-        return this
+       });
     }
-})
-
-const data = {
+ };
+ 
+ Object.defineProperty(Object.prototype, 'mergeDeepRight', {enumerable: false} );
+ 
+ const data = {
     name: 'fred',
     age: 10,
     contact: {
@@ -29,16 +26,20 @@ const data = {
             tags: ['important']
         }
     }
-};
-
-console.log(JSON.stringify(
-    data.mergeDeepRight({
+ };
+ 
+ data.mergeDeepRight({
         age: 40,
         contact: {
             email: 'baa@example.com',
             favorite: true,
             meta: {
-                tags: ['vip']
+                tags: ['vip'],
+             
             }
+        },
+    nope: {
+        value: 'nope'
         }
-    })));
+    });
+ console.log(JSON.stringify);
