@@ -1,10 +1,5 @@
 function CoffeeMachine(power, capacity) {
-	const pow={
-			pow : power,
-	};
-	Object.defineProperty(pow, 'pow', {
-		writable: false
-	});
+	const pow = power;
 	this.setWaterAmount = function(amount) {
 		if (amount < 0) {
 			throw new Error("Value has to be positive.");
@@ -20,9 +15,10 @@ function CoffeeMachine(power, capacity) {
   };
   
   this.getPower = function(){
-    return pow.pow;
+    return pow;
   }
 }
 
 var coffeeMachine = new CoffeeMachine(150,300);
+coffeeMachine.pow = 300;
 console.log(coffeeMachine.getPower())
